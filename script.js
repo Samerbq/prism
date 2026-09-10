@@ -105,11 +105,28 @@ outputTrigger.addEventListener('click', function (e) {
     outputStack.classList.toggle('open')
 })
 
-stackItems.addEventListener('click', function (e)   {
+stackItems.addEventListener('click', async function (e) {
     if (!e.target.classList.contains('item')) return
+
     const format = e.target.dataset.format
     outputStack.classList.remove('open')
-    console.log('convert to:', format)
+
+    showLoading()
+
+    if (inputType === 'image') {
+        const pdfBlob = await convertImagesToPdf(selectedFiles, setProgress)
+        downloadBlob(pdfBlob, 'converted.pdf')
+
+    } else if (inputType === 'pdf') {
+        const imageBlobs = await convertPdfToImages(selectedFiles[0], format, setProgress)
+        imageBlobs.forEach(function (blob, i) {
+            setTimeout(function () {
+                downloadBlob(blob, 'page-' + (i + 1) + '.' + format)
+            }, i * 300)
+        })
+    }
+
+    setTimeout(hideLoading, 400)
 })
 
 document.addEventListener('click', function (e)    {
@@ -310,3 +327,41 @@ async function convertImagesToPdf(files, onProgress) {
     onProgress(100)
     return new Blob([pdfBytes] , { type: 'application/pdf'})
 }
+
+
+// pdf.js library / claude ai 
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'
+
+async function convertPdfToImages(file, format, onProgress) {
+    const arrayBuffer = await file.arrayBuffer()
+    const pdf         = await pdfjsLib.getDocument({ data: arrayBuffer }).promise
+    const blobs       = []
+
+    for (let pageNum = 1 ; pageNum <= pdf.numPages ; pageNum++) {
+        const page     = await pdf.getPage(pageNum)
+        const viewport = page.getViewport({ scale: 2 })
+
+        const canvas  = document.createElement('canvas')
+        canvas.width  = viewport.width
+        canvas.height = viewport.height
+        const ctx     = canvas.getContext('2d')
+
+        await page.render({ canvasContext: ctx , viewport: viewport }).promise
+
+        const mime = format === 'png' ? 'image/png' : 'image/jpeg'
+        const blob = await new Promise(function (resolve) {
+            canvas.toBlob(resolve, mime, 0.92)
+        })
+        blobs.push(blob)
+
+        onProgress((pageNum / pdf.numPages) * 100)
+    }
+
+    return blobs
+}
+
+
+
+
+
