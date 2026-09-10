@@ -1,0 +1,176 @@
+* {
+    font-family : 'Courier New', Courier, monospace ;
+    box-sizing  : border-box                        ;
+}
+
+
+body {
+    background-color : #ffffff                           ;
+    color            : #000000                           ;
+    margin           :   40px auto                         ;
+    padding          : 0 20px                              ;
+    align-items      : center                              ;
+    line-height      : 1.6                                 ; 
+
+}
+
+
+
+h1 {
+    font-size     : 1.2rem    ;
+    font-weight   : normal    ;
+    margin        : 0 0 5px 0 ;
+
+}
+
+#clock {
+    margin-bottom : 40px      ;
+    color         : #555555 ;
+    font-size     : 0.9rem    ;
+
+}
+
+
+
+
+.converter-wrapper {
+    display        : flex   ;
+    flex-direction : column ; 
+    align-items    : center ;
+    text-align     : center ;
+    margin-top     : 10vh   ;
+
+}
+
+
+
+.action-layout {
+    display      : flex   ;
+    align-items  : center ;
+    gap          : 15px   ;
+    margin-bottom: 20px   ;
+
+}
+
+
+.box-button {
+    padding    : 10px 20px        ;
+    background : #fcfcfc        ; 
+    border     : 1px solid #eee ;
+    width      : 160px            ;
+    text-align : center           ;
+    position   : relative         ;
+    cursor     : pointer          ;
+    white-space: nowrap           ;
+
+
+}
+
+.box-button:hover {
+    background : #f0f0f0;
+
+}
+
+
+#file_input {
+    position : absolute ;
+    top      : 0        ;
+    left     : 0        ;
+    width    : 100%     ;
+    height   : 100%     ;
+    opacity  : 0        ;
+    cursor   : pointer  ;
+
+}
+
+
+.arrow {
+    color : #000000 ;
+
+}
+
+
+/* dark mode */
+
+#darkModeBtn {
+    position   : fixed     ;
+    top        : 20px      ;
+    right      : 20px      ;
+    background : none      ;
+    border     : none      ;
+    font-size  : 1rem      ;
+    color      : #0000ee ;
+    cursor     : pointer   ;
+    z-index    : 9999      ;
+    padding    : 0         ;
+}
+
+#darkModeBtn:hover {
+    text-decoration : underline ;
+
+}
+
+
+
+
+.filelist {
+
+    list-style-type : none ;
+    padding         : 0    ;
+    margin-bottom   : 20px ;
+
+}
+
+
+
+.status {
+    color : #555555 ;
+}
+
+/* here ill reuse the fixed positioning from my about section on my website */
+
+.corner-img {
+    position : fixed    ;
+    bottom   : 0        ;
+    right    : 0        ;
+    width    : 200px    ;
+    height   : auto     ;
+    z-index  : -1       ;
+}
+
+
+/* dark mode */
+
+
+body.dark-theme              { 
+    background-color        : #121212 !important ;
+    color                   : #e0e0e0 !important ;
+
+}
+
+body.dark-theme #darkModeBtn {
+    color                   : #8ab4f8 !important ;
+}
+
+body.dark-theme .box-button {
+    background             : #1e1e1e             ;
+    border-color           : #333                ;
+    color                  : #e0e0e0             ;
+
+}
+
+
+body.dark-theme .box-button:hover {
+    background : #2a2a2a ;
+
+}
+
+
+body.dark-theme .arrow {
+    color     : #e0e0e0 ;
+
+}
+
+body.dark-theme .status {
+    color    : #aaaaaa ;
+}

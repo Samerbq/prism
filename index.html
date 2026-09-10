@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> prism </title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
-
 
  <h1> prism </h1>
  <div    id="clock"      > central european time - loading . . . </div>
@@ -17,21 +17,26 @@
 <main    class="converter-wrapper">
 
 
+    <div class="action-layout">
+
+        <div class="box-button" id="dropzone">
+
+            click / drop 
+            <input type="file"  id="file_input" accept="image/jpeg, image/png" multiple>
+
+        </div>
+
+        <span class="arrow"> -&gt; </span>
+
+        <div  class="box-button" id="output_btn"> output </div>
+
+    </div>
+
+
 <ul  class="filelist" id="filelist">  </ul>
-
-<div class="dropzone" id="dropzone"> 
-
-    <p> click / drop <span class="arrow"> -&gt; </span> output </p>
-
-    <input type="file" id="file_input" accept="image/jpeg, image/png" multiple>
-
-
-</div>
 
 
 </main>
-
-
 
 <div>
 
