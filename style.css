@@ -176,3 +176,92 @@ body.dark-theme .arrow {
 body.dark-theme .status {
     color    : #aaaaaa ;
 }
+
+
+/* reuse of code from my other website ( this one is from claude Ai ! ) */
+
+.stack-container {
+    position       : relative ;
+    display        : flex     ;
+    flex-direction : column   ;
+    align-items    : center   ;
+}
+
+
+
+.stack-items .item {
+    padding      : 10px 20px                                 ;
+    background   : #fcfcfc                                 ;
+    border       : 1px solid #eee                          ;
+    color        : #333                                    ;
+    transition   : all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)   ;
+    position     : absolute                                  ;
+    top          : 0                                         ;
+    left         : 0                                         ;
+    width        : 160px                                     ;
+    box-sizing   : border-box                                ;
+    text-align   : center                                    ;
+
+    box-shadow   : 0 5px 14px rgba(0, 0, 0, 0.1)          ;
+    opacity      : 0                                        ;
+    pointer-events: none                                    ;
+    cursor       : pointer                                  ;
+
+}
+
+.stack-container.open .stack-items .item {
+    opacity        : 1    ;
+    pointer-events : auto ;
+}
+
+.stack-container.open .stack-items .item:nth-child(1) { transform: translate(6px, -64px)   rotate(2deg); }
+.stack-container.open .stack-items .item:nth-child(2) { transform: translate(16px, -128px) rotate(4deg); }
+
+body.dark-theme .stack-items .item {
+    background   : #1e1e1e ;
+    border-color : #333    ;
+    color        : #e0e0e0 ;
+
+}
+
+
+/* rest of the code -> */
+
+.loading-overlay {
+    position          : fixed ;
+    top               : 0     ;
+    left              : 0     ;
+    width             : 100%  ;
+    height            : 100%  ;
+    display           : flex  ;
+    align-items       : center;
+    justify-content   : center;
+    background        : rgba(255, 255, 255, 0.6) ;
+    z-index           : 10000                      ;
+}
+
+.loading-overlay[hidden] { 
+     display : none; 
+
+}
+
+.loading-box {
+    width      : 240px           ;
+    height     : 10px            ;
+    background : #fcfcfc       ;
+    border     : 1px solid #eee;
+    overflow   : hidden          ;
+
+}
+
+.loading-fill {
+    height     : 100%              ;
+    width      : 0%                ;
+    background : #2ecc71         ; 
+    transition : width 0.2s linear ;
+
+}
+
+
+body.dark-theme .loading-overlay { background : rgba(18, 18, 18, 0.7           );}
+bodt.dark-theem .loading-box     { background : #1e1e1e ; border-color : #333 ;}
