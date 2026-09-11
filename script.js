@@ -1,5 +1,5 @@
 
-/* here ill reuse code used from my other website */
+// here ill reuse code used from my other website
 
 function updateTime() {
     const now = new Date()
@@ -81,9 +81,9 @@ const CONVERSIONS = {
     pdf:   ['jpg', 'png']
 }
 
-const outputStack = document.getElementById('output_stack');
-const outputTrigger = document.getElementById('output_btn');
-const stackItems = document.getElementById('stack_items');
+const outputStack = document.getElementById('output_stack')
+const outputTrigger = document.getElementById('output_btn')
+const stackItems = document.getElementById('stack_items')
 
 function renderStackItems() {
     stackItems.innerHTML = ''
